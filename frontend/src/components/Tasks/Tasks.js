@@ -12,13 +12,18 @@ export const Tasks = () => {
   const { tasks } = useTasks(selectedBucket);
   //   console.log(tasks);
   let bucketName = '';
-  if (buckets && selectedBucket && !collatedTasksExist(selectedBucket)) {
-    bucketName = getTitle(buckets, selectedBucket).name;
-    console.log('bucketName 1:', bucketName);
-  }
+
   if (collatedTasksExist(selectedBucket) && selectedBucket) {
     bucketName = getCollatedTitle(collatedTasks, selectedBucket).name;
     console.log('bucketName 2:', bucketName);
+  }
+  if (
+    buckets.length > 0 &&
+    selectedBucket &&
+    !collatedTasksExist(selectedBucket)
+  ) {
+    bucketName = getTitle(buckets, selectedBucket).name;
+    console.log('bucketName 1:', bucketName);
   }
   useEffect(() => {
     document.title = `${bucketName}: Todolist`;

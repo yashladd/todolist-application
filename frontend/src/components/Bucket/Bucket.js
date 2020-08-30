@@ -20,7 +20,7 @@ export const Bucket = ({ bucket }) => {
   };
   return (
     <>
-      <span className='sidebar__dot'>.</span>
+      <span className='sidebar__dot'>•</span>
       <span className='sidebar__project-name'>{bucket.name}</span>
       <span
         className='sidebar__project-delete'

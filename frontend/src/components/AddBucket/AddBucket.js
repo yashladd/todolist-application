@@ -7,7 +7,7 @@ export const AddBucket = ({ shouldShow = false }) => {
   const [show, setShow] = useState(shouldShow);
   const [bucketName, setBucketName] = useState('');
   const bucketId = generatePushId();
-  const { setBuckets } = useBucketsValue();
+  const { buckets, setBuckets } = useBucketsValue();
 
   const addBucket = () => {
     bucketName &&
@@ -20,7 +20,7 @@ export const AddBucket = ({ shouldShow = false }) => {
           userId: 'd83b6768-e9d7',
         })
         .then(() => {
-          setBuckets([]);
+          setBuckets([...buckets]);
           setBucketName('');
           setShow(false);
         });
