@@ -29,7 +29,7 @@ export const Bucket = ({ bucket }) => {
         <FaTrashAlt />
         {showConfirm && (
           <div className='project-delete-modal'>
-            <div className='project-delete-modeal__inner'>
+            <div className='project-delete-modal__inner'>
               <p>Are you sure you want to delete this bucket?</p>
               <button
                 type='button'

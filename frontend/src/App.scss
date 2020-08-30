@@ -454,8 +454,6 @@ header {
      ============================================ */
 .content {
   display: grid;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
   grid-template-columns: 1fr auto;
   max-width: 922px;
@@ -492,8 +490,6 @@ header {
   }
 
   &__list li {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
     line-height: 18px;
     color: #333;
@@ -505,14 +501,8 @@ header {
 
     .checkbox-holder {
       margin-right: 20px;
-      display: -webkit-box;
-      display: -ms-flexbox;
       display: flex;
-      -webkit-box-align: center;
-      -ms-flex-align: center;
       align-items: center;
-      -webkit-box-pack: center;
-      -ms-flex-pack: center;
       justify-content: center;
       line-height: 16px;
 
