@@ -4,6 +4,7 @@ import { useTasks } from '../../hooks';
 import { collatedTasks } from '../../constants';
 import { getTitle, getCollatedTitle, collatedTasksExist } from '../../helpers';
 import { useSelectedBucketValue, useBucketsValue } from '../../context';
+import { AddTask } from '../AddTask/AddTask';
 
 export const Tasks = () => {
   const { selectedBucket } = useSelectedBucketValue();
@@ -28,12 +29,13 @@ export const Tasks = () => {
       <h2 data-testid='project-name'>{bucketName}</h2>
       <ul className='tasks__list'>
         {tasks.map(task => (
-          <li key={`{$task.id}`}>
+          <li key={`${task.id}`}>
             <Checkbox id={task.id} />
             <span>{task.task}</span>
           </li>
         ))}
       </ul>
+      <AddTask />
     </div>
   );
 };
