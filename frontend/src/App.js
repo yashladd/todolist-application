@@ -4,7 +4,6 @@ import { Content } from './components/layout/Content/Content';
 import { BucketsProvider, SelectedBucketProvider } from './context';
 
 export const App = () => {
-  console.log('app');
   return (
     <SelectedBucketProvider>
       <BucketsProvider>

@@ -2,13 +2,13 @@ import {
   BucketsContext,
   BucketsProvider,
   useBucketsValue,
-} from './project-context';
+} from './bucket-context';
 
 import {
   SelectedBucketContext,
   SelectedBucketProvider,
   useSelectedBucketValue,
-} from './selected-project-context';
+} from './selected-bucket-context';
 
 export {
   BucketsContext,

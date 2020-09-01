@@ -15,7 +15,7 @@ export const Bucket = ({ bucket }) => {
       .delete()
       .then(() => {
         setBuckets([...buckets]);
-        setSelectedBucket('INBOX');
+        setSelectedBucket('TODAY');
       });
   };
   return (

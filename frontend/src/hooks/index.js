@@ -1,12 +1,11 @@
 import { useState, useEffect } from 'react';
 import { firebase } from '../firebase';
 import { collatedTasksExist } from '../helpers';
-import React from 'react';
 import moment from 'moment';
 
 export const useTasks = selectedBucket => {
   const [tasks, setTasks] = useState([]);
-  const [archivedTasks, setArchivedTasks] = useState([]);
+  // const [archivedTasks, setArchivedTasks] = useState([]);
   useEffect(() => {
     let unsubsribe = firebase
       .firestore()
@@ -14,39 +13,38 @@ export const useTasks = selectedBucket => {
       .where('userId', '==', 'd83b6768-e9d7');
     unsubsribe =
       selectedBucket && !collatedTasksExist(selectedBucket)
-        ? (unsubsribe = unsubsribe.where('bucketId', '==', selectedBucket))
+        ? unsubsribe.where('bucketId', '==', selectedBucket)
         : selectedBucket === 'TODAY'
-        ? (unsubsribe = unsubsribe.where(
-            'date',
-            '==',
-            moment().format('DD/MM/YYYY')
-          ))
-        : selectedBucket == 'INBOX' || selectedBucket === 0
-        ? (unsubsribe = unsubsribe.where('date', '==', ''))
+        ? unsubsribe.where('date', '==', moment().format('DD/MM/YYYY'))
+        : selectedBucket === 'INBOX' || selectedBucket === 0
+        ? unsubsribe.where('date', '==', '')
         : unsubsribe;
 
     unsubsribe = unsubsribe.onSnapshot(snapshot => {
+      // console.log('Snapshot: ', snapshot.docs);
       const newTasks = snapshot.docs.map(task => ({
         id: task.id,
         ...task.data(),
       }));
-
+      // console.log(newTasks);
       setTasks(
         selectedBucket === 'NEXT_7'
           ? newTasks.filter(
               task =>
-                moment(task.date, 'DD-MM-YYYY').diff(moment(), 'days') <= 7 &&
-                task.archived !== true
+                moment(task.date, 'DD-MM-YYYY').diff(moment(), 'days') <= 7
+              //  &&task.archived !== true
             )
-          : newTasks.filter(task => task.archived !== true)
+          : newTasks
+        // .filter(task => task.archived !== true)
       );
 
-      setArchivedTasks(newTasks.filter(task => task.archived !== false));
+      // setArchivedTasks(newTasks.filter(task => task.archived !== false));
     });
     return () => unsubsribe();
   }, [selectedBucket]);
 
-  return { tasks, archivedTasks };
+  return { tasks, setTasks };
+  // return { tasks };
 };
 
 export const useBuckets = () => {
@@ -64,7 +62,7 @@ export const useBuckets = () => {
           ...bucket.data(),
           docId: bucket.id,
         }));
-
+        // console.log(allBuckets);
         if (JSON.stringify(allBuckets) !== JSON.stringify(buckets)) {
           setBuckets(allBuckets);
         }

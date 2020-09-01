@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { FaPizzaSlice } from 'react-icons/fa';
 import { AddTask } from '../AddTask/AddTask';
 export const Header = () => {
   const [shouldShowMain, setShouldShowMain] = useState(false);

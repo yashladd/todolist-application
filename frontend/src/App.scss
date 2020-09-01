@@ -452,6 +452,8 @@ header {
 
   &__list li {
     display: flex;
+    align-items: center;
+    justify-content: left;
     line-height: 18px;
     color: #333;
     padding-top: 10px;
@@ -478,6 +480,19 @@ header {
         border-radius: 16px;
       }
     }
+  }
+}
+
+.tasks__list-item {
+  font-size: 14px;
+  border-bottom: 1px solid #f0f0f0;
+
+  &-body {
+    display: grid;
+    justify-content: center;
+    position: relative;
+    -webkit-box-align: stretch;
+    grid-template-columns: 1fr 450px 1.5fr 1.5fr;
   }
 }
 
