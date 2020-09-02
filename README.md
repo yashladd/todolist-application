@@ -11,5 +11,6 @@ npm start
 
 ## Testing
 ```json
+ (Windows user) set CI=true&&npm test
  npm test -- --coverage
 ```
