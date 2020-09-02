@@ -8,3 +8,8 @@ cd frontend
 npm install
 npm start
 ```
+
+## Testing
+```json
+ npm test -- --coverage
+```
