@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaRegListAlt, FaRegCalendarAlt, FaCalendarAlt } from 'react-icons/fa';
+import { FaRegListAlt, FaCalendarAlt } from 'react-icons/fa';
 import moment from 'moment';
 import { firebase } from '../../firebase';
 import { useSelectedBucketValue } from '../../context';

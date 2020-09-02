@@ -23,11 +23,6 @@ export const Buckets = ({ activeValue = null }) => {
           setActive(bucket.bucketId);
           setSelectedBucket(bucket.bucketId);
         }}
-        //Come back here
-        onkeydown={() => {
-          setActive(bucket.bucketId);
-          setSelectedBucket(bucket.bucketId);
-        }}
       >
         <Bucket bucket={bucket} />
       </li>
